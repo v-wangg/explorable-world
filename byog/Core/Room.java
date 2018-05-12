@@ -7,15 +7,17 @@ public class Room implements Structure {
     Position leftCorner;
     int width;
     int height;
-    Position[] exits;
+    String entrance;
+    Exits exits;
 
-    public Room(Position leftCorner, int width, int height) {
+    public Room(Position leftCorner, int width, int height, String entrance) {
         this.leftCorner = leftCorner;
         this.width = width;
         this.height = height;
+        this.entrance = entrance;
     }
 
-    void addExits(Position[] exits) {
+    void addExits(Exits exits) {
         this.exits = exits;
     }
 

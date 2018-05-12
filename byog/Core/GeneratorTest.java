@@ -10,7 +10,7 @@ public class GeneratorTest {
         TERenderer ter = new TERenderer();
         ter.initialize(80, 30);
 
-        Map world = new Map(973293);
+        Map world = new Map(97);
         TETile[][] worldTiles = world.genWorld();
 
         ter.renderFrame(worldTiles);

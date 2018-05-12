@@ -23,13 +23,13 @@ public class Generator {
     }
 
     void genRoom(TETile[][] world, Position leftCorner) {
-        int roomWidth = randomizer.width();
-        int roomHeight = randomizer.height();
+        int roomWidth = randomizer.randomWidth();
+        int roomHeight = randomizer.randomHeight();
         System.out.println(roomWidth);
         System.out.println(roomHeight);
 
-        Room room = new Room(leftCorner, roomWidth, roomHeight);
-        Position[] exits = randomizer.randomExits(room);
+        Room room = new Room(leftCorner, roomWidth, roomHeight, "first");
+        Exits exits = randomizer.randomExits(room);
         room.addExits(exits);
 
         room.generate(world);

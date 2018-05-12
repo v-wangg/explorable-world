@@ -24,7 +24,7 @@ public class Map {
     }
 
     private Position genStart() {
-        return randomizer.worldStart();
+        return randomizer.randomWorldStart();
     }
 
     public TETile[][] genWorld() {

@@ -15,43 +15,48 @@ public class Randomizer {
         random = new Random(SEED);
     }
 
-    int height() {
-        return random.nextInt(10) + 3;
+    int randomHeight() {
+        return random.nextInt(9) + 4;
     }
 
-    int width() {
-        return random.nextInt(13) + 3;
+    int randomWidth() {
+        return random.nextInt(12) + 4;
     }
 
-    Position worldStart() {
+    Position randomWorldStart() {
         int x = random.nextInt(79) + 1;
         int y = random.nextInt(29) + 1;
         return new Position(x, y);
     }
 
-    private Position randomExit(Room room) {
-        String side = exitSide();
-
+    private Position randomSingleExit(Room room, String side) {
         if (side.equals("left")) {
+
             int xExit = room.leftCorner.x;
             int yExit = random.nextInt(room.height - 1) + room.leftCorner.y + 1;
             return new Position(xExit, yExit);
+
         } else if (side.equals("right")) {
+
             int xExit = room.leftCorner.x + room.width - 1;
             int yExit = random.nextInt(room.height - 1) + room.leftCorner.y + 1;
             return new Position(xExit, yExit);
+
         } else if (side.equals("top")) {
+
             int xExit = random.nextInt(room.width - 1) + room.leftCorner.x + 1;
             int yExit = room.leftCorner.y + room.height - 1;
             return new Position(xExit, yExit);
+
         } else {
+
             int xExit = random.nextInt(room.width - 1) + room.leftCorner.x + 1;
             int yExit = room.leftCorner.y;
             return new Position(xExit, yExit);
         }
     }
 
-    private String exitSide() {
+    private String randomExitSide() {
         int ref = random.nextInt(5);
         switch (ref) {
             case 0:
@@ -65,13 +70,14 @@ public class Randomizer {
         }
     }
 
-    Position[] randomExits(Room room) {
-        int numOfExits = random.nextInt(4) + 1;
-        Position[] exits = new Position[numOfExits];
-
+    Exits randomExits(Room room) {
+        int numOfExits = random.nextInt(3) + 1;
+        Exits exits = new Exits(room.entrance);
 
         for (int i = 0; i < numOfExits; i += 1) {
-            exits[i] = randomExit(room);
+            String side = randomExitSide();
+            Position exit = randomSingleExit(room, side);
+            exits.addExit(exit, side);
         }
         return exits;
     }
