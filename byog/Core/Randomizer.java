@@ -33,24 +33,24 @@ public class Randomizer {
         if (side.equals("left")) {
 
             int xExit = room.leftCorner.x;
-            int yExit = random.nextInt(room.height - 1) + room.leftCorner.y + 1;
+            int yExit = random.nextInt(room.height - 2) + room.leftCorner.y + 1;
             return new Position(xExit, yExit);
 
         } else if (side.equals("right")) {
 
             int xExit = room.leftCorner.x + room.width - 1;
-            int yExit = random.nextInt(room.height - 1) + room.leftCorner.y + 1;
+            int yExit = random.nextInt(room.height - 2) + room.leftCorner.y + 1;
             return new Position(xExit, yExit);
 
         } else if (side.equals("top")) {
 
-            int xExit = random.nextInt(room.width - 1) + room.leftCorner.x + 1;
+            int xExit = random.nextInt(room.width - 2) + room.leftCorner.x + 1;
             int yExit = room.leftCorner.y + room.height - 1;
             return new Position(xExit, yExit);
 
         } else {
 
-            int xExit = random.nextInt(room.width - 1) + room.leftCorner.x + 1;
+            int xExit = random.nextInt(room.width - 2) + room.leftCorner.x + 1;
             int yExit = room.leftCorner.y;
             return new Position(xExit, yExit);
         }
