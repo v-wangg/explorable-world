@@ -29,8 +29,11 @@ public class Generator {
         System.out.println(roomHeight);
 
         Room room = new Room(leftCorner, roomWidth, roomHeight);
-        Position[] exits = randomizer.exits(room);
+        Position[] exits = randomizer.randomExits(room);
+        room.addExits(exits);
 
-        room.generate(world, exits);
+        room.generate(world);
     }
+
+
 }

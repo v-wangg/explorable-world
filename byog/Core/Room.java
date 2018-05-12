@@ -3,10 +3,11 @@ package byog.Core;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
-public class Room {
+public class Room implements Structure {
     Position leftCorner;
     int width;
     int height;
+    Position[] exits;
 
     public Room(Position leftCorner, int width, int height) {
         this.leftCorner = leftCorner;
@@ -14,7 +15,12 @@ public class Room {
         this.height = height;
     }
 
-    void generate(TETile[][] world, Position[] exits) {
+    void addExits(Position[] exits) {
+        this.exits = exits;
+    }
+
+    @Override
+    public void generate(TETile[][] world) {
         horWall(world, leftCorner, width);
         leftCorner.y = leftCorner.y + height - 1;
         horWall(world, leftCorner, width);
@@ -24,11 +30,11 @@ public class Room {
         vertWall(world, leftCorner, height);
         leftCorner.x = leftCorner.x - width + 1;
 
-        addExits(world, exits);
-        addFloor(world);
+        genExits(world);
+        genFloor(world);
     }
 
-    private void addFloor(TETile[][] world) {
+    private void genFloor(TETile[][] world) {
         int xStart = leftCorner.x + 1;
         int yStart = leftCorner.y + 1;
         int yEnd = leftCorner.y + height - 1;
@@ -41,22 +47,11 @@ public class Room {
         }
     }
 
-    private void horWall(TETile[][] world, Position start, int length) {
-        for (int x = start.x; x < start.x + length; x += 1) {
-            world[x][start.y] = Tileset.WALL;
-        }
-
-    }
-
-    private void vertWall(TETile[][] world, Position start, int length) {
-        for (int y = start.y; y < start.y + length; y += 1) {
-            world[start.x][y] = Tileset.WALL;
-        }
-    }
-
-    private void addExits(TETile[][] world, Position[] exits) {
-        for (Position exit: exits) {
+    private void genExits(TETile[][] world) {
+        for (Position exit : exits) {
             world[exit.x][exit.y] = Tileset.FLOOR;
         }
     }
 }
+
+

@@ -29,21 +29,50 @@ public class Randomizer {
         return new Position(x, y);
     }
 
-    private Position exitBottom(Room room) {
-        int xPos = random.nextInt(room.width) + room.leftCorner.x;
-        return new Position(xPos, room.leftCorner.y);
+    private Position randomExit(Room room) {
+        String side = exitSide();
+
+        if (side.equals("left")) {
+            int xExit = room.leftCorner.x;
+            int yExit = random.nextInt(room.height - 1) + room.leftCorner.y + 1;
+            return new Position(xExit, yExit);
+        } else if (side.equals("right")) {
+            int xExit = room.leftCorner.x + room.width - 1;
+            int yExit = random.nextInt(room.height - 1) + room.leftCorner.y + 1;
+            return new Position(xExit, yExit);
+        } else if (side.equals("top")) {
+            int xExit = random.nextInt(room.width - 1) + room.leftCorner.x + 1;
+            int yExit = room.leftCorner.y + room.height - 1;
+            return new Position(xExit, yExit);
+        } else {
+            int xExit = random.nextInt(room.width - 1) + room.leftCorner.x + 1;
+            int yExit = room.leftCorner.y;
+            return new Position(xExit, yExit);
+        }
     }
 
-    private Position exitLeft(Room room) {
-        int yPos = random.nextInt(room.height) + room.leftCorner.y;
-        return new Position(room.leftCorner.x, yPos);
+    private String exitSide() {
+        int ref = random.nextInt(5);
+        switch (ref) {
+            case 0:
+                return "left";
+            case 1:
+                return "right";
+            case 2:
+                return "top";
+            default:
+                return "bottom";
+        }
     }
 
-    Position[] exits(Room room) {
-        Position[] exits = new Position[2];
+    Position[] randomExits(Room room) {
+        int numOfExits = random.nextInt(4) + 1;
+        Position[] exits = new Position[numOfExits];
 
-        exits[0] = exitBottom(room);
-        exits[1] = exitLeft(room);
+
+        for (int i = 0; i < numOfExits; i += 1) {
+            exits[i] = randomExit(room);
+        }
         return exits;
     }
 }
