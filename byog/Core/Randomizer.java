@@ -15,6 +15,12 @@ public class Randomizer {
         random = new Random(SEED);
     }
 
+    Position randomWorldStart() {
+        int x = random.nextInt(79) + 1;
+        int y = random.nextInt(29) + 1;
+        return new Position(x, y);
+    }
+
     int randomHeight() {
         return random.nextInt(9) + 4;
     }
@@ -23,10 +29,16 @@ public class Randomizer {
         return random.nextInt(12) + 4;
     }
 
-    Position randomWorldStart() {
-        int x = random.nextInt(79) + 1;
-        int y = random.nextInt(29) + 1;
-        return new Position(x, y);
+    int randomHorLength() {
+        int length = random.nextInt(5) + 1;
+        System.out.println(length);
+        return length;
+    }
+
+    int randomVertLength() {
+        int length = random.nextInt(5) + 1;
+        System.out.println(length);
+        return length;
     }
 
     private Position randomSingleExit(Room room, String side) {
@@ -77,7 +89,7 @@ public class Randomizer {
         for (int i = 0; i < numOfExits; i += 1) {
             String side = randomExitSide();
             Position exit = randomSingleExit(room, side);
-            exits.addExit(exit, side);
+            exits.addExit(side, exit);
         }
         return exits;
     }

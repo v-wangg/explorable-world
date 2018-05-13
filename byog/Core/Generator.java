@@ -12,6 +12,7 @@ package byog.Core;
 
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
+import java.util.Map;
 
 public class Generator {
     private int WINDOWWIDTH = 80;
@@ -22,18 +23,42 @@ public class Generator {
         this.randomizer = randomizer;
     }
 
-    void genRoom(TETile[][] world, Position leftCorner) {
+    Exits genRoom(TETile[][] world, Position leftCorner) {
         int roomWidth = randomizer.randomWidth();
         int roomHeight = randomizer.randomHeight();
-        System.out.println(roomWidth);
-        System.out.println(roomHeight);
 
         Room room = new Room(leftCorner, roomWidth, roomHeight, "first");
         Exits exits = randomizer.randomExits(room);
         room.addExits(exits);
 
         room.generate(world);
+
+        return exits;
     }
 
+    void genHallway(TETile[][] world, Position entry, String side) {
+        if (side.equals("left") || side.equals("right")) {
+            int length = randomizer.randomHorLength();
+            Hallway hallway = new Hallway(side, entry, length);
+            hallway.generate(world);
+        } else if (side.equals("top") || side.equals("bottom")) {
+            int length = randomizer.randomVertLength();
+            Hallway hallway = new Hallway(side, entry, length);
+            hallway.generate(world);
+        } else {
+            // For L shaped hallways
+        }
+    }
+
+    void genChain(TETile[][] world, Position start) {
+        Exits exits = genRoom(world, start);
+
+        Position[] entrancesArray = exits.getHallwayEntrances();
+        String[] sidesArray = exits.getSides();
+
+        for (int i = 0; i < entrancesArray.length; i += 1) {
+            genHallway(world, entrancesArray[i], sidesArray[i]);
+        }
+    }
 
 }

@@ -34,7 +34,7 @@ public class Map {
         Generator generator = new Generator(randomizer);
         Position p = new Position(40, 10);
 
-        generator.genRoom(world, p);
+        generator.genChain(world, p);
         return world;
     }
 }
