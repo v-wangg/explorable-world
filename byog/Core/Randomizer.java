@@ -21,24 +21,20 @@ public class Randomizer {
         return new Position(x, y);
     }
 
-    int randomHeight() {
+    int randomRoomHeight() {
         return random.nextInt(9) + 4;
     }
 
-    int randomWidth() {
+    int randomRoomWidth() {
         return random.nextInt(12) + 4;
     }
 
     int randomHorLength() {
-        int length = random.nextInt(5) + 1;
-        System.out.println(length);
-        return length;
+        return random.nextInt(5) + 1;
     }
 
     int randomVertLength() {
-        int length = random.nextInt(5) + 1;
-        System.out.println(length);
-        return length;
+        return random.nextInt(5) + 1;
     }
 
     private Position randomSingleExit(Room room, String side) {
@@ -84,13 +80,41 @@ public class Randomizer {
 
     Exits randomExits(Room room) {
         int numOfExits = random.nextInt(3) + 1;
-        Exits exits = new Exits(room.entrance);
+        Exits exits = new Exits(room.entranceSide);
 
         for (int i = 0; i < numOfExits; i += 1) {
             String side = randomExitSide();
             Position exit = randomSingleExit(room, side);
             exits.addExit(side, exit);
         }
+
+        room.addExits(exits);
+
         return exits;
+    }
+
+    Position randomRoomCorner(Position entrance, String entranceSide, int roomWidth, int roomHeight) {
+        if (entranceSide.equals("right")) {
+            int yMaxBound = entrance.y - 1;
+            int yMinBound = entrance.y - roomHeight + 2;
+            int yCorner = random.nextInt(yMaxBound - yMinBound + 1) + yMinBound;
+            return new Position(entrance.x - roomWidth + 1, yCorner);
+        } else if (entranceSide.equals("left")) {
+            int yMaxBound = entrance.y - 1;
+            int yMinBound = entrance.y - roomHeight + 2;
+            // System.out.println(yMaxBound + " " + yMinBound);
+            int yCorner = random.nextInt(yMaxBound - yMinBound + 1) + yMinBound;
+            return new Position(entrance.x, yCorner);
+        } else if (entranceSide.equals("top")) {
+            int xMaxBound = entrance.x - 1;
+            int xMinBound = entrance.x - roomWidth + 2;
+            int xCorner = random.nextInt(xMaxBound - xMinBound + 1) + xMinBound;
+            return new Position(xCorner, entrance.y - roomHeight + 1);
+        } else {
+            int xMaxBound = entrance.x - 1;
+            int xMinBound = entrance.x - roomWidth + 2;
+            int xCorner = random.nextInt(xMaxBound - xMinBound + 1) + xMinBound;
+            return new Position(xCorner, entrance.y);
+        }
     }
 }

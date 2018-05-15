@@ -3,8 +3,6 @@ package byog.Core;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
-//TODO: Find a way to generate hallways based on which side of the room they're extending off of
-
 public class Hallway implements Structure {
     private Position entry;
     private String side;
@@ -46,6 +44,30 @@ public class Hallway implements Structure {
             vertWall(world, start, length);
             start.x -= 1;
             genVertFloor(world, start);
+        }
+    }
+
+    Position getRoomEntrance() {
+        if (side.equals("right")) {
+            return new Position(entry.x - length, entry.y);
+        } else if (side.equals("left")) {
+            return new Position(entry.x + length, entry.y);
+        } else if (side.equals("top")) {
+            return new Position(entry.x, entry.y + length);
+        } else {
+            return new Position(entry.x, entry.y - length);
+        }
+    }
+
+    String getRoomEntranceSide() {
+        if (side.equals("right")) {
+            return "left";
+        } else if (side.equals("left")) {
+            return "right";
+        } else if (side.equals("top")) {
+            return "bottom";
+        } else {
+            return "top";
         }
     }
 

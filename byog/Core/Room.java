@@ -2,19 +2,22 @@ package byog.Core;
 
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
+import java.util.Map;
 
 public class Room implements Structure {
     Position leftCorner;
     int width;
     int height;
-    String entrance;
+    Position entrance;
+    String entranceSide;
     Exits exits;
 
-    public Room(Position leftCorner, int width, int height, String entrance) {
+    public Room(Position leftCorner, int width, int height, Position entrance, String entranceSide) {
         this.leftCorner = leftCorner;
         this.width = width;
         this.height = height;
         this.entrance = entrance;
+        this.entranceSide = entranceSide;
     }
 
     void addExits(Exits exits) {
@@ -32,8 +35,12 @@ public class Room implements Structure {
         vertWall(world, leftCorner, height);
         leftCorner.x = leftCorner.x - width + 1;
 
+        // System.out.println(leftCorner.x + " " + leftCorner.y);
+        System.out.println(entrance.x + " " + entrance.y);
+
         genExits(world);
         genFloor(world);
+        genEntrance(world);
     }
 
     private void genFloor(TETile[][] world) {
@@ -54,6 +61,16 @@ public class Room implements Structure {
             world[exit.x][exit.y] = Tileset.FLOOR;
         }
     }
+
+    private void genEntrance(TETile[][] world) {
+        if (entrance != null) {
+            world[entrance.x][entrance.y] = Tileset.FLOOR;
+        }
+    }
+
+//    private void genEntrance(TETile[][] world) {
+//        world[]
+//    }
 }
 
 

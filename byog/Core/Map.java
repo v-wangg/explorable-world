@@ -32,9 +32,9 @@ public class Map {
         initializeTiles(world);
 
         Generator generator = new Generator(randomizer);
-        Position p = new Position(40, 10);
+        Position start = new Position(35, 15);
 
-        generator.genChain(world, p);
+        generator.genRoomWithHallways(world, start, "left");
         return world;
     }
 }
