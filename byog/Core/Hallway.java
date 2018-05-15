@@ -49,9 +49,9 @@ public class Hallway implements Structure {
 
     Position getRoomEntrance() {
         if (side.equals("right")) {
-            return new Position(entry.x - length, entry.y);
-        } else if (side.equals("left")) {
             return new Position(entry.x + length, entry.y);
+        } else if (side.equals("left")) {
+            return new Position(entry.x - length, entry.y);
         } else if (side.equals("top")) {
             return new Position(entry.x, entry.y + length);
         } else {

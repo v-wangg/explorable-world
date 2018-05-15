@@ -35,9 +35,6 @@ public class Room implements Structure {
         vertWall(world, leftCorner, height);
         leftCorner.x = leftCorner.x - width + 1;
 
-        // System.out.println(leftCorner.x + " " + leftCorner.y);
-        System.out.println(entrance.x + " " + entrance.y);
-
         genExits(world);
         genFloor(world);
         genEntrance(world);
@@ -63,14 +60,10 @@ public class Room implements Structure {
     }
 
     private void genEntrance(TETile[][] world) {
-        if (entrance != null) {
+        if (!entranceSide.equals("start")) {
             world[entrance.x][entrance.y] = Tileset.FLOOR;
         }
     }
-
-//    private void genEntrance(TETile[][] world) {
-//        world[]
-//    }
 }
 
 

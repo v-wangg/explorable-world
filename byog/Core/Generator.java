@@ -61,13 +61,17 @@ public class Generator {
         return hallwaysArray;
     }
 
-    void genWorld(TETile[][] world, Position start) {
+    void genChain(TETile[][] world, Position start) {
         Hallway[] hallways = genRoomWithHallways(world, start, "start");
         for (int i = 0; i < hallways.length; i += 1) {
             Position entrance = hallways[i].getRoomEntrance();
             String entranceSide = hallways[i].getRoomEntranceSide();
             genRoomWithHallways(world, entrance, entranceSide);
         }
+    }
+
+    void genWorld(TETile[][] world, Position start) {
+        genChain(world, start);
     }
 
 }

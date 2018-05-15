@@ -110,11 +110,13 @@ public class Randomizer {
             int xMinBound = entrance.x - roomWidth + 2;
             int xCorner = random.nextInt(xMaxBound - xMinBound + 1) + xMinBound;
             return new Position(xCorner, entrance.y - roomHeight + 1);
-        } else {
+        } else if (entranceSide.equals("bottom")) {
             int xMaxBound = entrance.x - 1;
             int xMinBound = entrance.x - roomWidth + 2;
             int xCorner = random.nextInt(xMaxBound - xMinBound + 1) + xMinBound;
             return new Position(xCorner, entrance.y);
+        } else {
+            return entrance;
         }
     }
 }

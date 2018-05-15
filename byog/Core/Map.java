@@ -34,7 +34,7 @@ public class Map {
         Generator generator = new Generator(randomizer);
         Position start = new Position(35, 15);
 
-        generator.genRoomWithHallways(world, start, "left");
+        generator.genWorld(world, start);
         return world;
     }
 }
