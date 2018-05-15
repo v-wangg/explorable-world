@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f860edb-9671-4394-9a37-9be0d7adc386" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/byog/Core/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/byog/Core/Generator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/GeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/byog/Core/GeneratorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/Hallway.java" beforeDir="false" afterPath="$PROJECT_DIR$/byog/Core/Hallway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/byog/Core/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/Randomizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/byog/Core/Randomizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/byog/Core/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/world-generator/byog/Core/Generator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/world-generator/byog/Core/Generator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/world-generator/byog/Core/GeneratorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/world-generator/byog/Core/GeneratorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/world-generator/byog/Core/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/world-generator/byog/Core/Map.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,15 +27,12 @@
         <entry file="file://$PROJECT_DIR$/byog/Core/Generator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="365">
-              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+              <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="method#genRoom#0;class#Generator#0" />
                 <element signature="method#genHallway#0;class#Generator#0" />
                 <element signature="method#genRoomWithHallways#0;class#Generator#0" />
-                <element signature="method#genChain#0;class#Generator#0" />
-                <element signature="e#2586#2587#0" expanded="true" />
-                <element signature="e#2609#2610#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,10 +132,10 @@
       <list>
         <option value="$PROJECT_DIR$/byog/Core/Map.java" />
         <option value="$PROJECT_DIR$/byog/Core/Hallway.java" />
-        <option value="$PROJECT_DIR$/byog/Core/Generator.java" />
         <option value="$PROJECT_DIR$/byog/Core/Randomizer.java" />
         <option value="$PROJECT_DIR$/byog/Core/Room.java" />
         <option value="$PROJECT_DIR$/byog/Core/GeneratorTest.java" />
+        <option value="$PROJECT_DIR$/byog/Core/Generator.java" />
       </list>
     </option>
   </component>
@@ -405,9 +393,6 @@
             <element signature="method#genRoom#0;class#Generator#0" />
             <element signature="method#genHallway#0;class#Generator#0" />
             <element signature="method#genRoomWithHallways#0;class#Generator#0" />
-            <element signature="method#genChain#0;class#Generator#0" />
-            <element signature="e#2586#2587#0" expanded="true" />
-            <element signature="e#2609#2610#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -496,15 +481,12 @@
     <entry file="file://$PROJECT_DIR$/byog/Core/Generator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
-          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+          <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="method#genRoom#0;class#Generator#0" />
             <element signature="method#genHallway#0;class#Generator#0" />
             <element signature="method#genRoomWithHallways#0;class#Generator#0" />
-            <element signature="method#genChain#0;class#Generator#0" />
-            <element signature="e#2586#2587#0" expanded="true" />
-            <element signature="e#2609#2610#0" expanded="true" />
           </folding>
         </state>
       </provider>

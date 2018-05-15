@@ -8,6 +8,9 @@ package byog.Core;
 
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Generator {
@@ -61,17 +64,22 @@ public class Generator {
         return hallwaysArray;
     }
 
-    void genChain(TETile[][] world, Position start) {
+    List<Hallway[]> genChain(TETile[][] world, Position start) {
         Hallway[] hallways = genRoomWithHallways(world, start, "start");
+        List<Hallway[]> nextHallways = new ArrayList<>();
+
         for (int i = 0; i < hallways.length; i += 1) {
             Position entrance = hallways[i].getRoomEntrance();
             String entranceSide = hallways[i].getRoomEntranceSide();
-            genRoomWithHallways(world, entrance, entranceSide);
+            Hallway[] nextHallway = genRoomWithHallways(world, entrance, entranceSide);
+            nextHallways.add(nextHallway);
         }
+
+        return nextHallways;
     }
 
     void genWorld(TETile[][] world, Position start) {
-        genChain(world, start);
-    }
+        List<Hallway[]> hallways = genChain(world, start);
 
+    }
 }
